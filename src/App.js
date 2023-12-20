@@ -7,10 +7,6 @@ import "./App.css";
 // 	c: 30,
 // };
 
-// function something () {
-// 	const {} = obj
-// }
-
 function App() {
 	console.log("I am being called");
 	return (
