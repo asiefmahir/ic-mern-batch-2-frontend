@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import BioData from "./components/BioData";
+import "./App.css";
+
+// const obj = {
+// 	a: 10,
+// 	b: 20,
+// 	c: 30,
+// };
+
+// function something () {
+// 	const {} = obj
+// }
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	console.log("I am being called");
+	return (
+		<div className="App" id="App">
+			<BioData
+				name="Mahir Asief"
+				age="26"
+				email="asiefmahir1@gmail.com"
+				// phone="0213543545"
+				skills={["Js", "TS", "React", "Node"]}
+				interests={["System Design", "Chess", "Cricket"]}
+			/>
+			<hr />
+			<hr />
+			<BioData
+				name="Ahmed Shahin"
+				age="25"
+				email="shahin@gmail.com"
+				phone="4534545845641"
+				skills={["Js", "TS", "React", "Node", "html", "css"]}
+				interests={["System Design", "Football"]}
+			/>
+		</div>
+	);
 }
+
+// App()
+
+/**
+ * Component must have 3 Criteria:
+ * 1. Must be a function
+ * 2. That function should return "something"
+ * 3. That "something" must be some html-ish code (JSX)
+ */
+
+// App()
 
 export default App;
