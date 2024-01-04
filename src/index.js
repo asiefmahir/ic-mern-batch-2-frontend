@@ -5,6 +5,7 @@ import App from "./App";
 import StudentProvider from "./contexts/Student";
 
 import reportWebVitals from "./reportWebVitals";
+import App2 from "./App2";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +15,7 @@ root.render(
 				<h2>Hello</h2>
 			</App>
 		</StudentProvider>
+		{/* <App2 /> */}
 	</React.StrictMode>,
 );
 

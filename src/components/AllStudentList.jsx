@@ -2,31 +2,56 @@ import { useContext } from "react";
 import { StudentCtx } from "../contexts/Student";
 
 const AllStudentList = () => {
-	const {
-		students,
-		editHandler,
-		removeHandler,
-		makeAbsentHandler,
-		makePresentHandler,
-	} = useContext(StudentCtx);
+	const { studentStates, dispatch } = useContext(StudentCtx);
+
+	const shiftListHandler = (student, value) => {
+		if (student.isPresent !== undefined) {
+			return alert(`The student is already in a list`);
+		}
+
+		dispatch({
+			type: "UPDATE_STUDENT",
+			payload: {
+				item: student,
+				propertyName: "isPresent",
+				propertyValue: value,
+			},
+		});
+	};
 
 	return (
 		<div className="list all-student-list">
 			<h2>All Students</h2>
 			<ul>
-				{students.map((student) => (
+				{studentStates.students.map((student) => (
 					<li key={student.id}>
 						<span>{student.name}</span>
-						<button onClick={() => editHandler(student)}>
+						<button
+							onClick={() =>
+								dispatch({
+									type: "EDIT_STUDENT",
+									payload: student,
+								})
+							}
+						>
 							Edit
 						</button>
-						<button onClick={() => removeHandler(student.id)}>
+						<button
+							onClick={() =>
+								dispatch({
+									type: "REMOVE_STUDENT",
+									payload: student.id,
+								})
+							}
+						>
 							Remove
 						</button>
-						<button onClick={() => makePresentHandler(student)}>
+						<button onClick={() => shiftListHandler(student, true)}>
 							Make Present
 						</button>
-						<button onClick={() => makeAbsentHandler(student)}>
+						<button
+							onClick={() => shiftListHandler(student, false)}
+						>
 							Make Absent
 						</button>
 					</li>
