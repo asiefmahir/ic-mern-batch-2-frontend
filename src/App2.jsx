@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import "./App.css";
 
 const counterReducer = (currentState, action) => {
-	// action === { type: "INCREASE_COUNTER", payload: 10 }
+	// action ===
 	console.log(currentState, "currState");
 	console.log(action, "action");
 	// return 1000;

@@ -10,12 +10,13 @@ import App2 from "./App2";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<StudentProvider>
+		{/* <StudentProvider>
 			<App>
 				<h2>Hello</h2>
 			</App>
-		</StudentProvider>
+		</StudentProvider> */}
 		{/* <App2 /> */}
+		<App />
 	</React.StrictMode>,
 );
 
