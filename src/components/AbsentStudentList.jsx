@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { StudentCtx } from "../contexts/Student";
 
 const AbsentStudentList = () => {
-	const { studentStates, dispatch } = useContext(StudentCtx);
-	const absentStudentList = studentStates.students.filter(
+	const { students, toggleHandler } = useContext(StudentCtx);
+	const absentStudentList = students.filter(
 		(student) => student.isPresent === false,
 	);
 	return (
@@ -13,18 +13,7 @@ const AbsentStudentList = () => {
 				{absentStudentList.map((student) => (
 					<li key={student.id}>
 						<span>{student.name}</span>
-						<button
-							onClick={() =>
-								dispatch({
-									type: "UPDATE_STUDENT",
-									payload: {
-										item: student,
-										propertyName: "isPresent",
-										propertyValue: !student.isPresent,
-									},
-								})
-							}
-						>
+						<button onClick={() => toggleHandler(student)}>
 							Accidentally Added
 						</button>
 					</li>
