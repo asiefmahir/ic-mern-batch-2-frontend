@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { ourRouter } from "./router/router";
+import BoardProvider from "./contexts/Board";
+import ListProvider from "./contexts/List";
+import TaskProvider from "./contexts/Task";
 // import App from "./App";
 // import StudentProvider from "./contexts/Student";
 
@@ -17,7 +20,13 @@ root.render(
 		</StudentProvider> */}
 		{/* <App2 />
 		<App /> */}
-		<RouterProvider router={ourRouter} />
+		<BoardProvider>
+			<ListProvider>
+				<TaskProvider>
+					<RouterProvider router={ourRouter} />
+				</TaskProvider>
+			</ListProvider>
+		</BoardProvider>
 	</React.StrictMode>,
 );
 
