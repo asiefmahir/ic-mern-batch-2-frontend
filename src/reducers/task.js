@@ -13,7 +13,7 @@ export const taskReducer = (tasks = [], action) => {
 	switch (action.type) {
 		case "CREATE_TASK": {
 			const newTask = {
-				id: Date.now() + "",
+				id: action.payload.id,
 				title: action.payload.title,
 				listId: action.payload.listId,
 				boardId: action.payload.boardId,
