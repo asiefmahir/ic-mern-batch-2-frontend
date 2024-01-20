@@ -72,6 +72,47 @@ export const listReducer = (lists = [], action) => {
 			});
 		}
 
+		case "SORT_TASK_IDS_IN_LIST": {
+			const { draggableId, source, destination } = action.payload;
+
+			return lists.map((list) => {
+				if (
+					source.droppableId === destination.droppableId &&
+					list.id === source.droppableId
+				) {
+					const copyOfTaskIds = [...list.tasks];
+					copyOfTaskIds.splice(source.index, 1);
+					copyOfTaskIds.splice(destination.index, 0, draggableId);
+					return {
+						...list,
+						tasks: copyOfTaskIds,
+					};
+				}
+
+				if (source.droppableId === list.id) {
+					return {
+						...list,
+						tasks: list.tasks.filter(
+							(itemId) => itemId !== draggableId,
+						),
+					};
+				}
+
+				if (destination.droppableId === list.id) {
+					return {
+						...list,
+						tasks: [
+							...list.tasks.slice(0, destination.index),
+							draggableId,
+							...list.tasks.slice(destination.index),
+						],
+					};
+				}
+
+				return list;
+			});
+		}
+
 		default: {
 			return lists;
 		}
