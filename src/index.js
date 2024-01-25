@@ -1,17 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-// import { RouterProvider } from "react-router-dom";
-// import { ourRouter } from "./router/router";
-// import BoardProvider from "./contexts/Board";
-// import ListProvider from "./contexts/List";
-// import TaskProvider from "./contexts/Task";
-import App2 from "./App2";
-// import App from "./App";
-// import StudentProvider from "./contexts/Student";
-
-// import reportWebVitals from "./reportWebVitals";
-// import App2 from "./App2";
+import { RouterProvider } from "react-router-dom";
+import { ourRouter } from "./router/router";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -28,7 +19,8 @@ root.render(
 				</TaskProvider>
 			</ListProvider>
 		</BoardProvider> */}
-		<App2 />
+		{/* <App2 /> */}
+		<RouterProvider router={ourRouter} />
 	</React.StrictMode>,
 );
 
