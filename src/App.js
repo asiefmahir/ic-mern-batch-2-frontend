@@ -144,18 +144,21 @@
 // };
 
 // export default App;
+import { useSelector, useDispatch } from "react-redux";
 
 import "./App.css";
-
-import StudentForm from "./components/StudentForm";
-import StudentSection from "./components/StudentSection";
+import CounterApp from "./components/CounterApp";
+import ThemeBtn from "./components/ThemeBtn";
 
 const App = ({ children }) => {
+	const theme = useSelector((storeState) => storeState.theme);
 	return (
-		<div className="App">
-			{children}
-			<StudentForm />
-			<StudentSection />
+		<div
+			style={{ backgroundColor: theme.bgColor, color: theme.textColor }}
+			className="App"
+		>
+			<CounterApp />
+			<ThemeBtn />
 		</div>
 	);
 };
