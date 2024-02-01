@@ -1,5 +1,6 @@
 import { createStore, combineReducers } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
+import { cartReducer } from "./reducers/cart";
 
 const counterReducer = (state = 20, action) => {
 	switch (action.type) {
@@ -50,6 +51,7 @@ const themeReducer = (state = initState, action) => {
 const rootReducer = combineReducers({
 	counter: counterReducer,
 	theme: themeReducer,
+	cart: cartReducer,
 });
 
 export const store = createStore(rootReducer, composeWithDevTools());
