@@ -14,7 +14,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 
-import { cartReducer } from "./reducers/cart";
+import cartReducer from "./reducers/cart";
 import { counterReducer } from "./reducers/counter";
 import { themeReducer } from "./reducers/theme";
 
