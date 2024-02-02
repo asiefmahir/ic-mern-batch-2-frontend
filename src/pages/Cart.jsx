@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "../components/CartItem";
+import { clearCart } from "../store/actions/cart";
 
 const Cart = () => {
 	const cart = useSelector((storeState) => storeState.cart);
@@ -28,7 +29,10 @@ const Cart = () => {
 						</thead>
 						<tbody>
 							{cart.map((cartItem) => (
-								<CartItem cartItem={cartItem} />
+								<CartItem
+									key={cartItem.id}
+									cartItem={cartItem}
+								/>
 							))}
 						</tbody>
 					</table>
@@ -38,7 +42,7 @@ const Cart = () => {
 				</h2>
 				<div className="mt-50">
 					<button
-						onClick={() => dispatch({ type: "cart/clearCart" })}
+						onClick={() => dispatch(clearCart())}
 						className="btn-big"
 					>
 						Clear Cart
