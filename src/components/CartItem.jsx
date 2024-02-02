@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { icons } from "../assets";
+import { modifyQuantityOfAnItem, removeFromCart } from "../store/actions/cart";
 
 const CartItem = ({ cartItem }) => {
 	const [itemQuantity, setItemQuantity] = useState(cartItem.quantity);
@@ -29,13 +30,13 @@ const CartItem = ({ cartItem }) => {
 							setItemQuantity(
 								(currentQuantity) => currentQuantity - 1,
 							);
-							dispatch({
-								type: "cart/modifyQuantityOfAnItem",
-								payload: {
+
+							dispatch(
+								modifyQuantityOfAnItem({
 									id: cartItem.id,
 									quantity: itemQuantity - 1,
-								},
-							});
+								}),
+							);
 						}}
 					>
 						<figure>
@@ -48,13 +49,12 @@ const CartItem = ({ cartItem }) => {
 						value={itemQuantity}
 						onChange={(e) => {
 							setItemQuantity(Number(e.target.value));
-							dispatch({
-								type: "cart/modifyQuantityOfAnItem",
-								payload: {
+							dispatch(
+								modifyQuantityOfAnItem({
 									id: cartItem.id,
 									quantity: Number(e.target.value),
-								},
-							});
+								}),
+							);
 						}}
 						min="1"
 					/>
@@ -63,13 +63,12 @@ const CartItem = ({ cartItem }) => {
 							setItemQuantity(
 								(currentQuantity) => currentQuantity + 1,
 							);
-							dispatch({
-								type: "cart/modifyQuantityOfAnItem",
-								payload: {
+							dispatch(
+								modifyQuantityOfAnItem({
 									id: cartItem.id,
 									quantity: itemQuantity + 1,
-								},
-							});
+								}),
+							);
 						}}
 						className="qty-count qty-count--add"
 						type="button"
@@ -86,12 +85,7 @@ const CartItem = ({ cartItem }) => {
 					src={icons.crossIcon}
 					alt=""
 					className="cross-icon"
-					onClick={() =>
-						dispatch({
-							type: "cart/removeFromCart",
-							payload: cartItem.id,
-						})
-					}
+					onClick={() => dispatch(removeFromCart(cartItem.id))}
 				/>
 			</td>
 		</tr>
