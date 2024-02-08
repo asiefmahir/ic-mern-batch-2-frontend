@@ -1,29 +1,29 @@
-// export const addToCart = (product) => {
-// 	return {
-// 		type: "cart/addToCart",
-// 		payload: product,
-// 	};
-// };
+export const addToCart = (product) => {
+	return {
+		type: "cart/addToCart",
+		payload: product,
+	};
+};
 
-// export const removeFromCart = (productId) => {
-// 	return {
-// 		type: "cart/removeFromCart",
-// 		payload: productId,
-// 	};
-// };
+export const removeFromCart = (productId) => {
+	return {
+		type: "cart/removeFromCart",
+		payload: productId,
+	};
+};
 
-// export const modifyQuantityOfAnItem = (obj) => {
-// 	return {
-// 		type: "cart/modifyQuantityOfAnItem",
-// 		payload: obj,
-// 	};
-// };
+export const modifyQuantityOfAnItem = (obj) => {
+	return {
+		type: "cart/modifyQuantityOfAnItem",
+		payload: obj,
+	};
+};
 
-// export const clearCart = () => {
-// 	return {
-// 		type: "cart/clearCart",
-// 	};
-// };
+export const clearCart = () => {
+	return {
+		type: "cart/clearCart",
+	};
+};
 
 // import { createAction } from "@reduxjs/toolkit";
 
@@ -37,11 +37,11 @@
 // addToCart(); // {type: 'cart/addToCart'}
 // addToCart(5); // {type:'cart/addToCart', payload: 5 }
 
-import {
-	addToCart,
-	modifyQuantityOfAnItem,
-	removeFromCart,
-	clearCart,
-} from "../reducers/cart";
+// import {
+// 	addToCart,
+// 	modifyQuantityOfAnItem,
+// 	removeFromCart,
+// 	clearCart,
+// } from "../reducers/cart";
 
-export { addToCart, modifyQuantityOfAnItem, removeFromCart, clearCart };
+// export { addToCart, modifyQuantityOfAnItem, removeFromCart, clearCart };

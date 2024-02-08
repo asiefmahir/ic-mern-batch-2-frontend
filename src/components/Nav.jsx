@@ -10,6 +10,15 @@ const Nav = () => {
 							<Link to="/">Shop</Link>
 						</li>
 						<li>
+							<Link to="/posts">Posts</Link>
+						</li>
+						<li>
+							<Link to="/todos">Todos</Link>
+						</li>
+						<li>
+							<Link to="/counter-app">Counter App</Link>
+						</li>
+						<li>
 							<Link to="/cart">Cart</Link>
 						</li>
 					</ul>
