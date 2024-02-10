@@ -4,7 +4,6 @@ import CounterApp from "../components/CounterApp";
 import App from "../App";
 import Shop from "../pages/Shop";
 import Cart from "../pages/Cart";
-import Posts from "../pages/Posts";
 import Todos from "../pages/Todos";
 
 export const ourRouter = createBrowserRouter([
@@ -15,7 +14,6 @@ export const ourRouter = createBrowserRouter([
 			{ path: "/", index: true, element: <Shop /> },
 			{ path: "/cart", element: <Cart /> },
 			{ path: "/counter-app", element: <App /> },
-			{ path: "/posts", element: <Posts /> },
 			{ path: "/todos", element: <Todos /> },
 		],
 	},
