@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchTodos, createTodo, removeTodo } from "../store/reducers/todo";
+import {
+	useGetAllTodosQuery,
+	useCreateTodoMutation,
+	useRemoveTodoMutation,
+} from "../store/features/apiSlice";
 
 const Todos = () => {
 	const [todoTitle, setTodoTitle] = useState("");
+	const { data, error, isError, isFetching, isLoading } =
+		useGetAllTodosQuery();
+	// todos = 8
+	const [makeTodo] = useCreateTodoMutation();
+	const [deleteTodo] = useRemoveTodoMutation();
+	console.log("I am being rendered");
+	// makeTodo()
 
-	const todoState = useSelector((storeState) => storeState.todoState);
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(fetchTodos());
-	}, []);
+	// const todoState = useSelector((storeState) => storeState.todoState);
+	// const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(fetchTodos());
+	// }, []);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -17,11 +27,13 @@ const Todos = () => {
 			id: Date.now(),
 			title: todoTitle,
 		};
-		dispatch(createTodo(newTodo));
+		makeTodo(newTodo);
+		// dispatch(createTodo(newTodo));
 	};
 
 	const removeHandler = (todoId) => {
-		dispatch(removeTodo(todoId));
+		// dispatch(removeTodo(todoId));
+		deleteTodo(todoId);
 	};
 	return (
 		<div>
@@ -34,12 +46,14 @@ const Todos = () => {
 				<button type="submit">Create Todo</button>
 			</form>
 			<h2>All Todos</h2>
-			{todoState.loading && <p>Loading......</p>}
-			{todoState.error && <h3>{todoState.error}</h3>}
+			{isLoading && <p>Loading......</p>}
+			{isError && <h3>{error.message}</h3>}
 			<ul>
-				{todoState.todos.map((todo) => (
+				{data?.map((todo) => (
 					<li key={todo.id}>
 						<span>{todo.title}</span>
+						{/* <p>{todo.userName}</p> */}
+
 						<button onClick={() => removeHandler(todo.id)}>
 							Remove todo
 						</button>
