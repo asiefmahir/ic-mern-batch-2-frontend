@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
-import {
-	useGetAllTodosQuery,
-	useCreateTodoMutation,
-	useRemoveTodoMutation,
-} from "../store/features/apiSlice";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { createTodo, getAllTodos, removeTodo } from "../services/todos";
+import { useTodo } from "../hooks/useTodo";
+// import {
+// 	useGetAllTodosQuery,
+// 	useCreateTodoMutation,
+// 	useRemoveTodoMutation,
+// } from "../store/features/todos/todoApi";
 
 const Todos = () => {
 	const [todoTitle, setTodoTitle] = useState("");
-	const { data, error, isError, isFetching, isLoading } =
-		useGetAllTodosQuery();
-	// todos = 8
-	const [makeTodo] = useCreateTodoMutation();
-	const [deleteTodo] = useRemoveTodoMutation();
-	console.log("I am being rendered");
-	// makeTodo()
-
-	// const todoState = useSelector((storeState) => storeState.todoState);
-	// const dispatch = useDispatch();
-	// useEffect(() => {
-	// 	dispatch(fetchTodos());
-	// }, []);
+	const {
+		data,
+		isLoading,
+		isError,
+		error,
+		createTodoMutation,
+		removeMutation,
+	} = useTodo();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -27,13 +26,11 @@ const Todos = () => {
 			id: Date.now(),
 			title: todoTitle,
 		};
-		makeTodo(newTodo);
-		// dispatch(createTodo(newTodo));
+		createTodoMutation.mutate(newTodo);
 	};
 
 	const removeHandler = (todoId) => {
-		// dispatch(removeTodo(todoId));
-		deleteTodo(todoId);
+		removeMutation.mutate(todoId);
 	};
 	return (
 		<div>
