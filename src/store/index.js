@@ -23,12 +23,12 @@
 // );
 
 import { configureStore } from "@reduxjs/toolkit";
-
+import { setupListeners } from "@reduxjs/toolkit/query/react";
 import { cartReducer } from "./reducers/cart";
 import { counterReducer } from "./reducers/counter";
 import { themeReducer } from "./reducers/theme";
 // import { todoSlice } from "./reducers/todo";
-import { appApi } from "./features/apiSlice";
+import { appApi } from "./features/api/apiSlice";
 
 const rootReducer = {
 	counter: counterReducer,
@@ -42,3 +42,4 @@ export const store = configureStore({
 	reducer: rootReducer,
 	middleware: (gM) => gM().concat(appApi.middleware),
 });
+setupListeners(store.dispatch);

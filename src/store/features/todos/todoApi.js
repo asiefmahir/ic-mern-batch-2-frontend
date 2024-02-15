@@ -1,9 +1,6 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { appApi } from "../api/apiSlice";
 
-export const appApi = createApi({
-	reducerPath: "api",
-	baseQuery: fetchBaseQuery({ baseUrl: `http://localhost:5000/` }),
-	tagTypes: ["todos", "products"],
+const todoApi = appApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getAllTodos: builder.query({
 			query: () => `todos`,
@@ -28,15 +25,11 @@ export const appApi = createApi({
 			}),
 			invalidatesTags: ["todos"],
 		}),
-		// http://localhost:5000/todos/
 	}),
 });
 
-// {
-//     "todos": {data: [], is}
-// }
 export const {
 	useGetAllTodosQuery,
 	useCreateTodoMutation,
 	useRemoveTodoMutation,
-} = appApi;
+} = todoApi;
