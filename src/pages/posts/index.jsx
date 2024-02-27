@@ -16,7 +16,7 @@ const Posts = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-	const res = await fetch(`http://localhost:5000/posts`);
+	const res = await fetch(`http://localhost:7000/posts`);
 	const posts = await res.json();
 	console.log(posts, "posts");
 	return {
@@ -24,5 +24,5 @@ export async function getStaticProps() {
 		revalidate: 15,
 	};
 }
-
+// ISR -> Incremental Static Regeneration
 export default Posts;

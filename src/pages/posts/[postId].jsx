@@ -16,7 +16,7 @@ const PostDetails = ({ post }) => {
 };
 
 export async function getStaticPaths() {
-	const res = await fetch(`http://localhost:5000/posts`);
+	const res = await fetch(`http://localhost:7000/posts`);
 	const data = await res.json();
 	/**
      * [
@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 	const { postId } = context.params;
-	const res = await fetch(`http://localhost:5000/posts/${postId}`);
+	const res = await fetch(`http://localhost:7000/posts/${postId}`);
 	const post = await res.json();
 	return { props: { post } };
 }

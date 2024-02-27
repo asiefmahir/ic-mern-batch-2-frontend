@@ -3,3 +3,5 @@ const Team = () => {
 };
 
 export default Team;
+
+// SSG -> Static Site Generation
