@@ -7,7 +7,10 @@ function Nav() {
 				<nav className="header__navbar">
 					<ul>
 						<li>
-							<Link href="/shop">Shop</Link>
+							<Link href="/">Shop</Link>
+						</li>
+						<li>
+							<Link href="/about">About</Link>
 						</li>
 						<li>
 							<Link href="/cart">Cart</Link>
