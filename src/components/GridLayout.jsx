@@ -2,7 +2,7 @@ import ProductCard from "@/components/ProductCard";
 
 const GridLayout = async () => {
 	const res = await fetch(`http://localhost:8000/products`, {
-		next: { revalidate: 15 },
+		next: { tags: ["products"] },
 	});
 	const products = await res.json();
 	return (

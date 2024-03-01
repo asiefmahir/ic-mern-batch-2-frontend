@@ -1,6 +1,7 @@
 import GridLayout from "@/components/GridLayout";
 
 const Shop = () => {
+	console.log("I am being rerendered");
 	return (
 		<div>
 			<div className="page-banner">
