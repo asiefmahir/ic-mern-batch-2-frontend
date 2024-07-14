@@ -1,6 +1,10 @@
-import GridLayout from "@/components/GridLayout";
+// import GridLayout from "@/components/GridLayout";
 
-const Shop = () => {
+const Shop = async () => {
+	const res = await fetch(`http://localhost:4000/products`, {
+		next: { tags: ["products"] },
+	});
+	const products = await res.json();
 	console.log("I am being rerendered");
 	return (
 		<div>
@@ -19,7 +23,33 @@ const Shop = () => {
 						</div>
 					</div>
 					<div className="section__content">
-						<GridLayout />
+						<div class="grid three">
+							{products.map((product) => (
+								<div key={product.id} className="ingredient">
+									<div className="ingredient__image">
+										<figure>
+											<img
+												src={product.image}
+												alt={product.title}
+											/>
+										</figure>
+									</div>
+									<div className="ingredient__title">
+										<h3>{product.title}</h3>
+									</div>
+									<div className="ingredient__content">
+										<p className="price">
+											<span>{product.price}</span>
+										</p>
+									</div>
+									<div className="ingredient__btn">
+										<button className="btn-white">
+											ADD TO CART
+										</button>
+									</div>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -27,33 +57,8 @@ const Shop = () => {
 	);
 };
 
-// On-Demand ISR -> On-Demand Incremental Static Regeneration
+// export async function getStaticProps () {
+
+// }
 
 export default Shop;
-
-// import Image from "next/image";
-
-// const getPosts = async () => {
-// 	const res = await fetch(`http://localhost:8000/posts`, {
-// 		cache: "no-store",
-// 	});
-// 	const posts = await res.json();
-// 	return posts;
-// };
-// export default async function Home() {
-// 	console.log("Server Compo");
-// 	const posts = await getPosts();
-
-// 	return (
-// 		<main>
-// 			<h2>All Posts</h2>
-// 			<br />
-// 			<hr />
-// 			<ul>
-// 				{posts?.map((post) => (
-// 					<li key={post.id}>{post.title}</li>
-// 				))}
-// 			</ul>
-// 		</main>
-// 	);
-// }

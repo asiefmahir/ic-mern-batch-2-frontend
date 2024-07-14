@@ -1,20 +1,7 @@
 import { createProduct } from "../actions/product";
 
 const AddProductForm = () => {
-	// const [product, setProduct] = useState({
-	// 	title: "",
-	// 	price: "",
-	// 	image: "",
-	// 	description: "",
-	// });
-
-	// // const [addProduct] = useCreateProductMutation();
-
-	// const handleChange = (e) => {
-	// 	setProduct({ ...product, [e.target.name]: e.target.value });
-	// 	// setProduct({ ...product, "title": sdfdsfdsfad });
-	// };
-
+	console.log("I am form page");
 	return (
 		<>
 			<form
@@ -25,6 +12,7 @@ const AddProductForm = () => {
 					alignItems: "center",
 				}}
 				action={createProduct}
+				// action={createProduct}
 			>
 				<p>Title:</p>
 				<input
@@ -57,6 +45,7 @@ const AddProductForm = () => {
 					name="image"
 					style={{ display: "block", width: "80%" }}
 					type="text"
+					required
 				/>
 				<br />
 				<input type="submit" />
